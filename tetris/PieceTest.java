@@ -17,11 +17,11 @@ public class PieceTest {
 	// pyramid and s pieces in instance variables
 	// that can be used in tests.
 	private Piece pyr1, pyr2, pyr3, pyr4;
-	private Piece s, sRotated;
+	private Piece s, sRotated, sq, stick;
 
 	@Before
 	public void setUp() throws Exception {
-		
+		Piece.getPieces();
 		pyr1 = new Piece(Piece.PYRAMID_STR);
 		pyr2 = pyr1.computeNextRotation();
 		pyr3 = pyr2.computeNextRotation();
@@ -29,6 +29,8 @@ public class PieceTest {
 		
 		s = new Piece(Piece.S1_STR);
 		sRotated = s.computeNextRotation();
+		sq = new Piece(Piece.SQUARE_STR);
+		stick = new Piece(Piece.STICK_STR);
 	}
 	
 	// Here are some sample tests to get you started
@@ -49,8 +51,8 @@ public class PieceTest {
 		assertEquals(1, l.getWidth());
 		assertEquals(4, l.getHeight());
 	}
-	
-	
+
+
 	// Test the skirt returned by a few pieces
 	@Test
 	public void testSampleSkirt() {
@@ -58,9 +60,19 @@ public class PieceTest {
 		// right for arrays.
 		assertTrue(Arrays.equals(new int[] {0, 0, 0}, pyr1.getSkirt()));
 		assertTrue(Arrays.equals(new int[] {1, 0, 1}, pyr3.getSkirt()));
-		
+
 		assertTrue(Arrays.equals(new int[] {0, 0, 1}, s.getSkirt()));
 		assertTrue(Arrays.equals(new int[] {1, 0}, sRotated.getSkirt()));
+	}
+
+
+	// Test the rotation methods
+	@Test
+	public void testSampleRotation() {
+		assertTrue(Piece.getPieces()[Piece.SQUARE].equals(Piece.getPieces()[Piece.SQUARE].fastRotation()));
+		assertFalse(Piece.getPieces()[Piece.STICK].equals(Piece.getPieces()[Piece.STICK].fastRotation()));
+		assertTrue(Piece.getPieces()[Piece.STICK].equals(Piece.getPieces()[Piece.STICK].fastRotation().fastRotation()));
+		assertTrue(Piece.getPieces()[Piece.S1].computeNextRotation().equals(Piece.getPieces()[Piece.S1].fastRotation()));
 	}
 	
 	

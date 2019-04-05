@@ -2,6 +2,8 @@
 
 package tetris;
 
+import java.util.Comparator;
+
 /*
  This is just a trivial "struct" type class --
  it simply holds an int x/y point for use by Tetris,
@@ -27,6 +29,7 @@ public class TPoint {
 		this.x = point.x;
 		this.y = point.y;
 	}
+
 
 	// Standard equals() override
 	public boolean equals(Object other) {

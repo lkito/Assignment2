@@ -35,7 +35,25 @@ public class Piece {
 	 Makes its own copy of the array and the TPoints inside it.
 	*/
 	public Piece(TPoint[] points) {
-		// YOUR CODE HERE
+		body = new TPoint[points.length];
+		int maxX = 0;
+		int maxY = 0;
+		for(int i = 0; i < points.length; i++){
+			body[i] = new TPoint(points[i]);
+			if(points[i].x > maxX) maxX = points[i].x;
+			if(points[i].y > maxY) maxY = points[i].y;
+		}
+		width = maxX + 1;
+		height = maxY + 1;
+		skirt = new int[width];
+		for(int i = 0; i < width; i++){
+			skirt[i] = Integer.MAX_VALUE;
+		}
+		for(int i = 0; i < points.length; i++){
+			if(points[i].y < skirt[points[i].x]) skirt[points[i].x] = points[i].y;
+		}
+		next = null;
+
 	}
 	
 
@@ -88,7 +106,11 @@ public class Piece {
 	 rotated from the receiver.
 	 */
 	public Piece computeNextRotation() {
-		return null; // YOUR CODE HERE
+		TPoint[] newBody = new TPoint[body.length];
+		for(int i = 0; i < body.length; i++){
+			newBody[i] = new TPoint(this.getHeight() - 1 - body[i].y, body[i].x);
+		}
+		return (new Piece(newBody));
 	}
 
 	/**
@@ -101,7 +123,20 @@ public class Piece {
 		return next;
 	}
 	
-
+	//Compares two sets, used because TPoint doesn't have compare function
+	private boolean setEquals(Set<TPoint> firstSet, Set<TPoint> secondSet){
+		for(TPoint tp : firstSet){
+			boolean flag = false;
+			for(TPoint tp2 : secondSet){
+				if(tp.equals(tp2)){
+					flag = true;
+					break;
+				}
+			}
+			if(!flag) return false;
+		}
+		return true;
+	}
 
 	/**
 	 Returns true if two pieces are the same --
@@ -119,9 +154,20 @@ public class Piece {
 		// (null will be false)
 		if (!(obj instanceof Piece)) return false;
 		Piece other = (Piece)obj;
-		
-		// YOUR CODE HERE
-		return true;
+		TPoint[] firstBody = this.getBody();
+		TPoint[] secondBody = other.getBody();
+		if(this.getWidth() != other.getWidth()
+				|| this.getHeight() != other.getHeight()
+				|| firstBody.length != secondBody.length){
+			return false;
+		}
+		Set<TPoint> firstSet = new HashSet<>();
+		Set<TPoint> secondSet = new HashSet<>();
+		for(int i = 0; i < firstBody.length; i++){
+			firstSet.add(firstBody[i]);
+			secondSet.add(secondBody[i]);
+		}
+		return setEquals(firstSet, secondSet);
 	}
 
 
@@ -187,7 +233,20 @@ public class Piece {
 	 to the first piece.
 	*/
 	private static Piece makeFastRotations(Piece root) {
-		return null; // YOUR CODE HERE
+		Piece newRoot = new Piece(root.getBody());
+		Piece lastPiece = newRoot;
+		Piece nextPiece;
+		while(true){
+			nextPiece = lastPiece.computeNextRotation();
+			if(nextPiece.equals(newRoot)){
+				lastPiece.next = root;
+				break;
+			}
+			lastPiece.next = nextPiece;
+			lastPiece = nextPiece;
+		}
+
+		return newRoot;
 	}
 	
 	
