@@ -64,10 +64,15 @@ public class BoardTest {
 	@Test
 	public void test3() {
 		b.commit();
-		int result = b.place(Piece.getPieces()[Piece.STICK], 0, 1);
+		int result = b.place(sRotated, 1, 1);
+		assertEquals(Board.PLACE_OK, result);
+		b.commit();
+		b.clearRows();
+		b.commit();
+		result = b.place(Piece.getPieces()[Piece.STICK], 0, 1);
 		assertEquals(Board.PLACE_OK, result);
 
-		b.clearRows();
+		assertEquals(3, b.clearRows());
 
 		assertEquals(2, b.getColumnHeight(0));
 		assertEquals(1, b.getColumnHeight(1));
@@ -80,10 +85,15 @@ public class BoardTest {
 	@Test
 	public void test4() {
 		b.commit();
-		int result = b.place(Piece.getPieces()[Piece.L2].fastRotation().fastRotation(), 0, 2);
 
+		int result = b.place(sRotated, 1, 1);
 		assertEquals(Board.PLACE_OK, result);
-		b.clearRows();
+		b.commit();
+
+		result = b.place(Piece.getPieces()[Piece.L2].fastRotation().fastRotation(), 0, 2);
+		assertEquals(Board.PLACE_OK, result);
+
+		assertEquals(2, b.clearRows());
 
 		assertEquals(2, b.getRowWidth(0));
 		assertEquals(2, b.getRowWidth(1));
@@ -97,9 +107,9 @@ public class BoardTest {
 
 		b.commit();
 
-		result = b.place(Piece.getPieces()[Piece.L1].fastRotation().fastRotation(), 2, 1);
+		result = b.place(Piece.getPieces()[Piece.L1].fastRotation().fastRotation(), 1, 1);
 		assertEquals(Board.PLACE_OK, result);
-		b.clearRows();
+		assertEquals(2, b.clearRows());
 
 		assertEquals(2, b.getRowWidth(0));
 		assertEquals(2, b.getRowWidth(1));
@@ -115,7 +125,12 @@ public class BoardTest {
 	@Test
 	public void testDrop() {
 		b.commit();
-		int result = b.dropHeight(Piece.getPieces()[Piece.L2].fastRotation().fastRotation(), 0);
+
+		int result = b.place(sRotated, 1, 1);
+		assertEquals(Board.PLACE_OK, result);
+		b.commit();
+
+		result = b.dropHeight(Piece.getPieces()[Piece.L2].fastRotation().fastRotation(), 0);
 		assertEquals(2, result);
 
 		result = b.dropHeight(Piece.getPieces()[Piece.STICK], 0);
@@ -125,14 +140,15 @@ public class BoardTest {
 		assertEquals(Board.PLACE_OK, result);
 
 		b.clearRows();
+		b.commit();
 
-		result = b.dropHeight(Piece.getPieces()[Piece.L1].fastRotation().fastRotation(), 2);
+		result = b.dropHeight(Piece.getPieces()[Piece.L1].fastRotation().fastRotation(), 1);
 		assertEquals(0, result);
 
 		result = b.dropHeight(Piece.getPieces()[Piece.SQUARE], 0);
-		assertEquals(3, result);
+		assertEquals(2, result);
 
-		result = b.dropHeight(Piece.getPieces()[Piece.STICK], 2);
+		result = b.dropHeight(Piece.getPieces()[Piece.STICK].fastRotation(), 2);
 		assertEquals(b.PLACE_OUT_BOUNDS, result);
 	}
 
@@ -141,32 +157,38 @@ public class BoardTest {
 	public void testGetGridAndUndo() {
 		b.commit();
 
-		int result = b.place(Piece.getPieces()[Piece.STICK], 0, 1);
+		int result = b.place(sRotated, 1, 1);
+		assertEquals(Board.PLACE_OK, result);
+		b.commit();
+
+		result = b.place(Piece.getPieces()[Piece.STICK], 0, 1);
 		assertEquals(Board.PLACE_OK, result);
 
 		assertTrue(b.getGrid(0, 2));
 
 		b.clearRows();
 
-		assertFalse(b.getGrid(0, 2));
+		assertTrue(b.getGrid(0, 1));
 		assertFalse(b.getGrid(1, 1));
+		assertFalse(b.getGrid(2, 0));
 
 		b.undo();
 
-		assertTrue(b.getGrid(0, 2));
+		assertFalse(b.getGrid(0, 1));
 		assertTrue(b.getGrid(1, 1));
+		assertTrue(b.getGrid(2, 0));
 
-		result = b.place(Piece.getPieces()[Piece.L1].fastRotation().fastRotation(), 2, 3);
+		result = b.place(Piece.getPieces()[Piece.L1].fastRotation().fastRotation(), 1, 3);
 		assertEquals(Board.PLACE_OK, result);
 
 		assertTrue(b.getGrid(2, 5));
 		assertTrue(b.getGrid(1, 5));
+		//out of bounds check
 		assertTrue(b.getGrid(3, 3));
 
 		b.undo();
 
 		assertFalse(b.getGrid(2, 5));
 		assertFalse(b.getGrid(1, 5));
-		assertFalse(b.getGrid(3, 3));
 	}
 }
