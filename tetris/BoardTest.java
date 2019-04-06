@@ -27,6 +27,7 @@ public class BoardTest {
 		sRotated = s.computeNextRotation();
 		
 		b.place(pyr1, 0, 0);
+
 	}
 	
 	// Check the basic width/height/max after the one placement

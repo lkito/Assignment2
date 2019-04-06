@@ -13,7 +13,19 @@ public class Board	{
 	// Some ivars are stubbed out for you:
 	private int width;
 	private int height;
+
+	//max column height
+	private int maxHeight;
+	private int xMaxHeight;
+
+	//width of every row
+	private int[] widths;
+	private int[] xWidths;
+	//height of every row
+	private int[] heights;
+	private int[] xHeights;
 	private boolean[][] grid;
+	private boolean[][] xGrid;
 	private boolean DEBUG = true;
 	boolean committed;
 	
@@ -28,9 +40,14 @@ public class Board	{
 		this.width = width;
 		this.height = height;
 		grid = new boolean[width][height];
+		xGrid = new boolean[width][height];
 		committed = true;
-		
-		// YOUR CODE HERE
+		maxHeight = 0;
+		widths = new int[height];
+		heights = new int[width];
+		xWidths = new int[height];
+		xHeights = new int[width];
+
 	}
 	
 	
@@ -54,8 +71,8 @@ public class Board	{
 	 Returns the max column height present in the board.
 	 For an empty board this is 0.
 	*/
-	public int getMaxHeight() {	 
-		return 0; // YOUR CODE HERE
+	public int getMaxHeight() {
+		return maxHeight;
 	}
 	
 	
@@ -79,7 +96,14 @@ public class Board	{
 	 to compute this fast -- O(skirt length).
 	*/
 	public int dropHeight(Piece piece, int x) {
-		return 0; // YOUR CODE HERE
+		if(x + piece.getWidth() - 1 >= getWidth()) return PLACE_OUT_BOUNDS;
+		int[] skirt = piece.getSkirt();
+		int max = 0;
+		for(int i = 0; i < skirt.length; i++) {
+			max = Math.max(max, heights[x + i] - skirt[i]);
+		}
+		if(max + piece.getHeight() - 1 >= getHeight()) return PLACE_OUT_BOUNDS;
+		return max;
 	}
 	
 	
@@ -89,7 +113,7 @@ public class Board	{
 	 The height is 0 if the column contains no blocks.
 	*/
 	public int getColumnHeight(int x) {
-		return 0; // YOUR CODE HERE
+		return heights[x];
 	}
 	
 	
@@ -98,7 +122,7 @@ public class Board	{
 	 the given row.
 	*/
 	public int getRowWidth(int y) {
-		 return 0; // YOUR CODE HERE
+		 return widths[y];
 	}
 	
 	
@@ -108,7 +132,8 @@ public class Board	{
 	 always return true.
 	*/
 	public boolean getGrid(int x, int y) {
-		return false; // YOUR CODE HERE
+		if(x < 0 || y < 0 || x >= getWidth() || y >= getHeight()) return true;
+		return grid[x][y];
 	}
 	
 	
@@ -135,11 +160,25 @@ public class Board	{
 		// flag !committed problem
 		if (!committed) throw new RuntimeException("place commit problem");
 			
-		int result = PLACE_OK;
-		
-		// YOUR CODE HERE
-		
-		return result;
+		int result = dropHeight(piece, x);
+		if(y + piece.getHeight() - 1 >= getHeight()) return PLACE_OUT_BOUNDS;
+		if(result > y) return PLACE_BAD;
+
+		System.arraycopy(grid, 0, xGrid, 0, grid.length);
+		System.arraycopy(heights, 0, xHeights, 0, heights.length);
+		System.arraycopy(widths, 0, xWidths, 0, widths.length);
+
+		xMaxHeight = getMaxHeight();
+		committed = false;
+
+		TPoint[] body = piece.getBody();
+		for(int i = 0; i < body.length; i++){
+			grid[x + body[i].x][y + body[i].y] = true;
+			widths[y + body[i].y]++;
+			if(heights[x + body[i].x] < y + body[i].y + 1) heights[x + body[i].x] = y + body[i].y + 1;
+			if(y + body[i].y + 1 > maxHeight) maxHeight = y + body[i].y + 1;
+		}
+		return PLACE_OK;
 	}
 	
 	
@@ -164,7 +203,13 @@ public class Board	{
 	 See the overview docs.
 	*/
 	public void undo() {
-		// YOUR CODE HERE
+		if(committed) return;
+		System.arraycopy(xGrid, 0, grid, 0, grid.length);
+		System.arraycopy(xHeights, 0, heights, 0, heights.length);
+		System.arraycopy(xWidths, 0, widths, 0, widths.length);
+
+		maxHeight = xMaxHeight;
+		commit();
 	}
 	
 	
