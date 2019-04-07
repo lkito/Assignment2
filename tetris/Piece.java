@@ -239,7 +239,7 @@ public class Piece {
 		while(true){
 			nextPiece = lastPiece.computeNextRotation();
 			if(nextPiece.equals(newRoot)){
-				lastPiece.next = root;
+				lastPiece.next = newRoot;
 				break;
 			}
 			lastPiece.next = nextPiece;

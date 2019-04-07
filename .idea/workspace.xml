@@ -24,32 +24,15 @@
     </SUITE>
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="419" />
+    <option name="myElementSize" value="95" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tetris/BoardTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tetris/Board.java">
+        <entry file="file://$PROJECT_DIR$/tetris/PieceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
-              <folding>
-                <element signature="e#3175#3176#0" expanded="true" />
-                <element signature="e#3303#3304#0" expanded="true" />
-                <element signature="e#7009#7010#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="43">
+              <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -65,7 +48,6 @@
       <find>rotated</find>
       <find>sRot</find>
       <find>columnh</find>
-      <find>place</find>
       <find>getmax</find>
       <find>getmaxh</find>
       <find>drophe</find>
@@ -82,6 +64,9 @@
       <find>sys</find>
       <find>system.o</find>
       <find>sanityc</find>
+      <find>rotate</find>
+      <find>place</find>
+      <find>stick</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,10 +76,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/tetris/TPoint.java" />
-        <option value="$PROJECT_DIR$/tetris/Piece.java" />
-        <option value="$PROJECT_DIR$/tetris/PieceTest.java" />
         <option value="$PROJECT_DIR$/tetris/BoardTest.java" />
+        <option value="$PROJECT_DIR$/tetris/Piece.java" />
         <option value="$PROJECT_DIR$/tetris/Board.java" />
+        <option value="$PROJECT_DIR$/tetris/PieceTest.java" />
       </list>
     </option>
   </component>
@@ -136,7 +121,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554591830092" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554595124112" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -156,7 +141,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest">
+  <component name="RunManager" selected="JUnit.PieceTest.testSize">
+    <configuration name="JTetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetris.JTetris" />
+      <module name="hw2Tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetris.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hw2Tetris" />
       <extension name="coverage">
@@ -168,54 +166,6 @@
       <option name="PACKAGE_NAME" value="tetris" />
       <option name="MAIN_CLASS_NAME" value="tetris.BoardTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hw2Tetris" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tetris.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tetris" />
-      <option name="MAIN_CLASS_NAME" value="tetris.BoardTest" />
-      <option name="METHOD_NAME" value="test3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardTest.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hw2Tetris" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tetris.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tetris" />
-      <option name="MAIN_CLASS_NAME" value="tetris.BoardTest" />
-      <option name="METHOD_NAME" value="test4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardTest.testDrop" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hw2Tetris" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tetris.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tetris" />
-      <option name="MAIN_CLASS_NAME" value="tetris.BoardTest" />
-      <option name="METHOD_NAME" value="testDrop" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,13 +186,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PieceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hw2Tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetris.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tetris" />
+      <option name="MAIN_CLASS_NAME" value="tetris.PieceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PieceTest.testSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hw2Tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetris.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tetris" />
+      <option name="MAIN_CLASS_NAME" value="tetris.PieceTest" />
+      <option name="METHOD_NAME" value="testSize" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PieceTest.testSize" />
+        <item itemvalue="Application.JTetris" />
+        <item itemvalue="JUnit.PieceTest" />
         <item itemvalue="JUnit.BoardTest" />
         <item itemvalue="JUnit.BoardTest.testGetGridAndUndo" />
-        <item itemvalue="JUnit.BoardTest.testDrop" />
-        <item itemvalue="JUnit.BoardTest.test4" />
-        <item itemvalue="JUnit.BoardTest.test3" />
       </list>
     </recent_temporary>
   </component>
@@ -261,26 +242,11 @@
       <workItem from="1554037640635" duration="17000" />
       <workItem from="1554482061233" duration="9582000" />
       <workItem from="1554543440915" duration="1235000" />
-      <workItem from="1554561930969" duration="25023000" />
+      <workItem from="1554561930969" duration="28258000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BoardTest_testGetGridAndUndo - 2019.04.07 at 02h 06m 58s.xml">
-      <configuration name="BoardTest.testGetGridAndUndo" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BoardTest_testGetGridAndUndo - 2019.04.07 at 02h 25m 59s.xml">
-      <configuration name="BoardTest.testGetGridAndUndo" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BoardTest_testGetGridAndUndo - 2019.04.07 at 02h 29m 34s.xml">
-      <configuration name="BoardTest.testGetGridAndUndo" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BoardTest_testGetGridAndUndo - 2019.04.07 at 02h 31m 07s.xml">
-      <configuration name="BoardTest.testGetGridAndUndo" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BoardTest_testGetGridAndUndo - 2019.04.07 at 02h 31m 40s.xml">
-      <configuration name="BoardTest.testGetGridAndUndo" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="BoardTest_testGetGridAndUndo - 2019.04.07 at 02h 32m 37s.xml">
       <configuration name="BoardTest.testGetGridAndUndo" configurationId="JUnit" />
     </history-entry>
@@ -296,15 +262,30 @@
     <history-entry file="BoardTest - 2019.04.07 at 02h 35m 58s.xml">
       <configuration name="BoardTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BoardTest - 2019.04.07 at 03h 01m 11s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PieceTest - 2019.04.07 at 03h 31m 47s.xml">
+      <configuration name="PieceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PieceTest - 2019.04.07 at 03h 37m 40s.xml">
+      <configuration name="PieceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PieceTest_testSize - 2019.04.07 at 03h 55m 35s.xml">
+      <configuration name="PieceTest.testSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PieceTest_testSize - 2019.04.07 at 03h 56m 08s.xml">
+      <configuration name="PieceTest.testSize" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36390000" />
+    <option name="totallyTimeSpent" value="39625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="25" width="1305" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.15402299" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17011495" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -313,7 +294,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.433281" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4976452" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -333,7 +314,7 @@
       <window_info anchor="right" id="Maven" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.21532567" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.5961686" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,26 +331,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tetris/PieceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="100" column="84" lean-forward="true" selection-start-line="100" selection-start-column="84" selection-end-line="100" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tetris/Piece.class">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tetris/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-370">
-          <caret line="141" column="12" selection-start-line="141" selection-start-column="12" selection-end-line="141" selection-end-column="12" />
-          <folding>
-            <element signature="e#3102#3103#0" expanded="true" />
-            <element signature="e#3120#3121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/Object.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -378,10 +341,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tetris/JTetris.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/tetris/BoardTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -390,13 +356,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tetris/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
+        <state relative-caret-position="-338">
+          <caret line="117" column="58" selection-start-line="117" selection-start-column="58" selection-end-line="117" selection-end-column="58" />
           <folding>
+            <element signature="e#3151#3152#0" expanded="true" />
             <element signature="e#3175#3176#0" expanded="true" />
+            <element signature="e#3279#3280#0" expanded="true" />
             <element signature="e#3303#3304#0" expanded="true" />
+            <element signature="e#6986#6987#0" expanded="true" />
             <element signature="e#7009#7010#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tetris/JTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+          <folding>
+            <element signature="e#3612#3613#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tetris/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="81" />
+          <folding>
+            <element signature="e#3102#3103#0" expanded="true" />
+            <element signature="e#3120#3121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tetris/PieceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
         </state>
       </provider>
     </entry>

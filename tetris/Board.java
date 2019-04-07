@@ -115,11 +115,12 @@ public class Board	{
 	 to compute this fast -- O(skirt length).
 	*/
 	public int dropHeight(Piece piece, int x) {
-		if(x + piece.getWidth() - 1 >= getWidth()) return PLACE_OUT_BOUNDS;
+		if(x + piece.getWidth() - 1 >= getWidth() || x < 0) return PLACE_OUT_BOUNDS;
 		int[] skirt = piece.getSkirt();
 		int max = 0;
 		for(int i = 0; i < skirt.length; i++) {
 			max = Math.max(max, Math.max(0, heights[x + i] - skirt[i]));
+			if(x + i == -1) System.out.println("FUCK x: " + x + " I: " + i);
 		}
 		if(max + piece.getHeight() - 1 >= getHeight()) return PLACE_OUT_BOUNDS;
 		return max;
