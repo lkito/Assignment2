@@ -120,7 +120,6 @@ public class Board	{
 		int max = 0;
 		for(int i = 0; i < skirt.length; i++) {
 			max = Math.max(max, Math.max(0, heights[x + i] - skirt[i]));
-			if(x + i == -1) System.out.println("FUCK x: " + x + " I: " + i);
 		}
 		if(max + piece.getHeight() - 1 >= getHeight()) return PLACE_OUT_BOUNDS;
 		return max;
